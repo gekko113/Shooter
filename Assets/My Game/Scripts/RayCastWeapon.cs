@@ -6,10 +6,12 @@ namespace My_Game.Scripts
     public class RayCastWeapon : MonoBehaviour
     {
         [SerializeField] private DataWeapon dataWeapon;
+        [SerializeField] private Transform pointFire;
+        
         [SerializeField] private float fireRate;
         private InputUser _inputUser;
         private float _nextFire;
-        private bool _initialized = false;
+        private bool _initialized;
 
         public void Init(InputUser user)
         {
@@ -61,7 +63,9 @@ namespace My_Game.Scripts
 
         private void Shoot()
         {
-            if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit))
+            var center = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+            var ray = Camera.main.ScreenPointToRay(center);
+            if (Physics.Raycast(pointFire.position, ray.direction, out RaycastHit hit))
             {
                 Debug.Log(hit.transform.name);
             }
