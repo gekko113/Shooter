@@ -15,6 +15,7 @@ namespace My_Game.Scripts
         public event Action OnFirst;
         public event Action OnSecond;
         public event Action OnThird;
+        public event Action OnReload;
         private NewMapActions _newMapActions;
         
         private void OnEnable()
@@ -28,7 +29,14 @@ namespace My_Game.Scripts
             _newMapActions.Player._1.started += First;
             _newMapActions.Player._2.started += Second;
             _newMapActions.Player._3.started += Third;
+            _newMapActions.Player.Reload.started += ReloadOnstarted;
         }
+
+        private void ReloadOnstarted(InputAction.CallbackContext obj)
+        {
+            OnReload?.Invoke();
+        }
+
         private void First(InputAction.CallbackContext obj)
         {
             OnFirst?.Invoke();

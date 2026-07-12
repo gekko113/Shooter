@@ -52,6 +52,7 @@ GameObject:
   - component: {fileID: 751853165146100692}
   - component: {fileID: 4625918301392463868}
   - component: {fileID: -7328549487999869608}
+  - component: {fileID: -5015732192786458710}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -74,6 +75,7 @@ Transform:
   m_Children:
   - {fileID: 2968517971424649088}
   - {fileID: 4366164441132418161}
+  - {fileID: 8141729621565597242}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5877809946776473839
@@ -313,7 +315,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::My_Game.Scripts.SwitchWeapon
   weaponInventory: {fileID: 5753310840451845982}
-  inputUser: {fileID: 0}
+--- !u!114 &-5015732192786458710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3050999903553934536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f7d3ad8fea54939a6747b0817f109d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::My_Game.Scripts.DropWeapon
+  weaponInventory: {fileID: 5753310840451845982}
+  dropPosition: {fileID: 8141729621565597242}
 --- !u!1 &4499652357619372629
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,6 +355,37 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1.022, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2156062324433383356}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5271199349486592897
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8141729621565597242}
+  m_Layer: 0
+  m_Name: dropPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8141729621565597242
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5271199349486592897}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.29, y: -0.61899996, z: 0.034}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

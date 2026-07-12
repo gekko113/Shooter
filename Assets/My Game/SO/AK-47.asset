@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SO.DataWeapon
   type: 0
   isAutomatic: 1
-  prefab: {fileID: 4165259451047050552, guid: 1d002f47cd77dc44dbb3d5260f225379, type: 3}
+  prefab: {fileID: 8134958019730271587, guid: 1d002f47cd77dc44dbb3d5260f225379, type: 3}
   sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   amountAmmoInMagazine: 30
   ammountAmmoMax: 90

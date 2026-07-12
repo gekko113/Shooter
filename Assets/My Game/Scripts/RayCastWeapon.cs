@@ -7,16 +7,17 @@ namespace My_Game.Scripts
     {
         [SerializeField] private DataWeapon dataWeapon;
         [SerializeField] private Transform pointFire;
-        
+
         [SerializeField] private float fireRate;
         private InputUser _inputUser;
         private float _nextFire;
         private bool _initialized;
+        private float _currentBullets;
+        private float _maxBullets;
 
         public void Init(InputUser user)
         {
             _inputUser = user;
-            Debug.Log(_inputUser.name);
             _initialized = true;
             Subscribe();
         }
@@ -27,17 +28,22 @@ namespace My_Game.Scripts
             {
                 Subscribe();
             }
+
+            _currentBullets = dataWeapon.amountAmmoInMagazine;
+            _maxBullets = dataWeapon.ammountAmmoMax;
         }
 
         private void Subscribe()
         {
             _inputUser.OnFireStarted += InputUserOnOnFireStarted;
+            _inputUser.OnReload += ReloadWeapon;
         }
 
 
         private void Update()
         {
             if (!dataWeapon.isAutomatic || !_initialized) return;
+            if (_currentBullets <= 0 ) return;
             if (_inputUser.IsFirePressed)
             {
                 _nextFire -= Time.deltaTime;
@@ -57,6 +63,7 @@ namespace My_Game.Scripts
         {
             if (!dataWeapon.isAutomatic)
             {
+                if (_currentBullets <= 0) return;
                 Shoot();
             }
         }
@@ -68,7 +75,18 @@ namespace My_Game.Scripts
             if (Physics.Raycast(pointFire.position, ray.direction, out RaycastHit hit))
             {
                 Debug.Log(hit.transform.name);
+                _currentBullets--;
             }
+        }
+
+        private void ReloadWeapon()
+        {
+            var maxBulletsInMagazine = dataWeapon.amountAmmoInMagazine;
+            var needed = maxBulletsInMagazine - _currentBullets;
+            if (needed <= 0) return;
+            var delta = Mathf.Min(needed, _maxBullets);
+            _maxBullets -= delta;
+            _currentBullets += delta;
         }
 
         private void OnDisable()
@@ -76,6 +94,7 @@ namespace My_Game.Scripts
             if (_initialized)
             {
                 _inputUser.OnFireStarted -= InputUserOnOnFireStarted;
+                _inputUser.OnReload -= ReloadWeapon;
             }
         }
     }

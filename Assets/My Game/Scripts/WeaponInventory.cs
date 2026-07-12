@@ -7,7 +7,7 @@ namespace My_Game.Scripts
     {
         public DataWeapon[] dataWeapons;
         public GameObject[] weaponPrefabs;
-        private float _currentIndex = -1;
+        public int CurrentIndex { get; private set; } = -1;
 
         public void AddWeapon(DataWeapon dataWeapon)
         {
@@ -17,15 +17,20 @@ namespace My_Game.Scripts
 
         public void RegisterPrefabs(DataWeapon dataWeapon, GameObject prefab)
         {
+            if (weaponPrefabs[(int)dataWeapon.type] != null) return;
             weaponPrefabs[(int)dataWeapon.type] = prefab;
         }
 
-        public void RemoveWeapon(DataWeapon dataWeapon)
+        public DataWeapon RemoveWeapon(int index)
         {
-            dataWeapons[(int)dataWeapon.type] = null;
-            weaponPrefabs[(int)dataWeapon.type] = null;
+            if (index < 0 || index >= dataWeapons.Length) return null;
+            DataWeapon removedWeapon = dataWeapons[index];
+            dataWeapons[index] = null;
+            Destroy(weaponPrefabs[index]);
+            weaponPrefabs[index] = null;
+            return removedWeapon;
         }
-    
+
         public void SwitchWeapon(int index)
         {
             if (index < 0 || index >= weaponPrefabs.Length)
@@ -38,7 +43,8 @@ namespace My_Game.Scripts
                     weaponPrefabs[i].SetActive(i == index);
                 }
             }
-            _currentIndex = index;
+
+            CurrentIndex = index;
         }
     }
 }
