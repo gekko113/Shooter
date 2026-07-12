@@ -20,6 +20,8 @@ namespace My_Game.Scripts
             _inputUser = user;
             _initialized = true;
             Subscribe();
+            _currentBullets = dataWeapon.amountAmmoInMagazine;
+            _maxBullets = dataWeapon.ammountAmmoMax;
         }
 
         private void OnEnable()
@@ -28,9 +30,6 @@ namespace My_Game.Scripts
             {
                 Subscribe();
             }
-
-            _currentBullets = dataWeapon.amountAmmoInMagazine;
-            _maxBullets = dataWeapon.ammountAmmoMax;
         }
 
         private void Subscribe()

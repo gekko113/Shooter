@@ -86,6 +86,7 @@ namespace My_Game.Scripts
             _newMapActions.Player._1.started -= First;
             _newMapActions.Player._2.started -= Second;
             _newMapActions.Player._3.started -= Third;
+            _newMapActions.Player.Reload.started -= ReloadOnstarted;
         }
     }
 }
