@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce5c00be8b034b0482f28822e8640dfb, type: 3}
+  m_Name: AK-47
+  m_EditorClassIdentifier: Assembly-CSharp::SO.DataWeapon
+  type: 0
+  isAutomatic: 1
+  prefab: {fileID: 4165259451047050552, guid: 1d002f47cd77dc44dbb3d5260f225379, type: 3}
+  sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  amountAmmoInMagazine: 30
+  ammountAmmoMax: 90
