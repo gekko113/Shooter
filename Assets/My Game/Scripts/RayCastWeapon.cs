@@ -7,7 +7,7 @@ namespace My_Game.Scripts
 {
     public class RayCastWeapon : MonoBehaviour
     {
-        [FormerlySerializedAs("OnShoot")] public UnityEvent onShoot;
+        public UnityEvent onShoot;
         [SerializeField] private DataWeapon dataWeapon;
         [SerializeField] private Transform pointFire;
 

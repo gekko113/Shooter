@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9202905880949543444}
   - component: {fileID: 8629081057798106416}
   - component: {fileID: -4899779925702948683}
+  - component: {fileID: 5873206285182538700}
   m_Layer: 0
   m_Name: M1911
   m_TagString: Untagged
@@ -78,6 +79,18 @@ MonoBehaviour:
       - m_Target: {fileID: 8629081057798106416}
         m_TargetAssemblyTypeName: My_Game.Scripts.AudioHandler, Assembly-CSharp
         m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5873206285182538700}
+        m_TargetAssemblyTypeName: My_Game.Scripts.VFXWeaponHandler, Assembly-CSharp
+        m_MethodName: VFXApply
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -214,6 +227,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5873206285182538700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618064248308987834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3999c08f6d49bba794bd4a1b77e5fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::My_Game.Scripts.VFXWeaponHandler
+  particleSystemPrefab: {fileID: 268755870485695087, guid: d945810a9f224c9489e14ef6a7f0a1b4, type: 3}
+  positionVFX: {fileID: 5151896393679989255}
+  lifeTime: 0.5
 --- !u!1 &1225979612209562581
 GameObject:
   m_ObjectHideFlags: 0
