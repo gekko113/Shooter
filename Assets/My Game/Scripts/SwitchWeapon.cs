@@ -5,8 +5,6 @@ namespace My_Game.Scripts
     public class SwitchWeapon : MonoBehaviour
     {
         [SerializeField] private WeaponInventory weaponInventory;
-        
-        
         private InputUser _inputUser;
         
         public void Init(InputUser inputUser)

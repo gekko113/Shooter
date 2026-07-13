@@ -5,6 +5,8 @@ namespace My_Game.Scripts
 {
     public class WeaponInventory : MonoBehaviour
     {
+        [SerializeField] private AudioWeapon audioWeapon;
+
         public DataWeapon[] dataWeapons;
         public GameObject[] weaponPrefabs;
         public int CurrentIndex { get; private set; } = -1;

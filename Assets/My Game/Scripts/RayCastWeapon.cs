@@ -1,10 +1,13 @@
 using SO;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace My_Game.Scripts
 {
     public class RayCastWeapon : MonoBehaviour
     {
+        [FormerlySerializedAs("OnShoot")] public UnityEvent onShoot;
         [SerializeField] private DataWeapon dataWeapon;
         [SerializeField] private Transform pointFire;
 
@@ -73,7 +76,7 @@ namespace My_Game.Scripts
             var ray = Camera.main.ScreenPointToRay(center);
             if (Physics.Raycast(pointFire.position, ray.direction, out RaycastHit hit))
             {
-                Debug.Log(hit.transform.name);
+                onShoot?.Invoke();
                 _currentBullets--;
             }
         }

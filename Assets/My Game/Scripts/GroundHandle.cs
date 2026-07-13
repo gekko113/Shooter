@@ -11,11 +11,15 @@ namespace My_Game.Scripts
         [SerializeField] private LayerMask groundMask;
         private bool _isGrounded;
 
-
+        public bool ReturnGroundStatus()
+        {
+            return _isGrounded;
+        }
         private void Update()
         {
             CheckGround();
         }
+        
 
         private void CheckGround()
         {

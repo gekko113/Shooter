@@ -194,6 +194,8 @@ GameObject:
   - component: {fileID: 5928446370405599226}
   - component: {fileID: 5423572913245887420}
   - component: {fileID: 7704616232605978532}
+  - component: {fileID: -3550100442404400326}
+  - component: {fileID: -4824341607355557143}
   m_Layer: 0
   m_Name: AK74
   m_TagString: Untagged
@@ -310,9 +312,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df11085730e85a9468a7156586a86f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::My_Game.Scripts.RayCastWeapon
+  onShoot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -4824341607355557143}
+        m_TargetAssemblyTypeName: My_Game.Scripts.AudioHandler, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   dataWeapon: {fileID: 11400000, guid: 1025bbb327f5a6d4483e6ddfa1f8d235, type: 2}
   pointFire: {fileID: 3519212647640666780}
-  fireRate: 0.2
+  fireRate: 0.1
 --- !u!114 &7704616232605978532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,6 +343,117 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::My_Game.Scripts.WeaponPickUp
   dataWeapon: {fileID: 11400000, guid: 1025bbb327f5a6d4483e6ddfa1f8d235, type: 2}
+--- !u!82 &-3550100442404400326
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8134958019730271587}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &-4824341607355557143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8134958019730271587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6cf7a26f0fc4489a5da57529c906d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::My_Game.Scripts.AudioHandler
+  audioClip: {fileID: 8300000, guid: 98b6aa7fac5d0ee48949bf477cfe238b, type: 3}
+  audioSource: {fileID: -3550100442404400326}
 --- !u!1 &8646199023746570110
 GameObject:
   m_ObjectHideFlags: 0

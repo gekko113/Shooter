@@ -6,14 +6,13 @@ namespace My_Game.Scripts
     [RequireComponent(typeof(CharacterController))]
     public class CharacterMovementBasedOnCameraRotation : MonoBehaviour
     {
-
-        
         [SerializeField] private CinemachineCamera cameraTransform;
         [SerializeField] private float velocity;
     
         private CharacterController _controller;
         private Vector3 _moveDirection;
         private InputUser _inputUser;
+        private bool isMoving;
 
         public void Init(InputUser inputUser)
         {
@@ -29,6 +28,19 @@ namespace My_Game.Scripts
             Movement();
         }
 
+        public bool ReturnMovement()
+        {
+            if (_moveDirection != Vector3.zero)
+            {
+                isMoving = true;
+            }
+            else
+            {
+                isMoving = false;
+            }
+            return isMoving;
+        }
+        
         private void Movement()
         {
             _moveDirection = new Vector3(_inputUser.Direction.x, 0f, _inputUser.Direction.y).normalized;
