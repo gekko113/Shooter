@@ -6,7 +6,7 @@ namespace My_Game.Scripts
     [RequireComponent(typeof(CharacterController))]
     public class CharacterMovementBasedOnCameraRotation : MonoBehaviour
     {
-        [SerializeField] private CinemachineCamera cameraTransform;
+        [SerializeField] private CinemachineCamera camera;
         [SerializeField] private float velocity;
     
         private CharacterController _controller;
@@ -18,6 +18,7 @@ namespace My_Game.Scripts
         {
             _inputUser = inputUser;
         }
+        
         private void Start()
         {
             _controller = GetComponent<CharacterController>();
@@ -51,14 +52,14 @@ namespace My_Game.Scripts
 
         private Vector3 GetCameraForward()
         {
-            var cameraForward = cameraTransform.transform.forward;
+            var cameraForward = camera.transform.forward;
             cameraForward.y = 0;
             return cameraForward;
         }
 
         private Vector3 GetCameraRight()
         {
-            var cameraRight = cameraTransform.transform.right;
+            var cameraRight = camera.transform.right;
             cameraRight.y = 0;
             return cameraRight;
         }

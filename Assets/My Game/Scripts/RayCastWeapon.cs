@@ -1,7 +1,7 @@
+using DG.Tweening;
 using SO;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 
 namespace My_Game.Scripts
 {
@@ -10,6 +10,10 @@ namespace My_Game.Scripts
         public UnityEvent onShoot;
         [SerializeField] private DataWeapon dataWeapon;
         [SerializeField] private Transform pointFire;
+        [SerializeField] private Vector3 recoil;
+
+        [SerializeField] private Transform weaponTransform;
+        private Vector3 _originalWeaponRotation;
 
         [SerializeField] private float fireRate;
         private InputUser _inputUser;
@@ -18,6 +22,7 @@ namespace My_Game.Scripts
         private float _currentBullets;
         private float _maxBullets;
 
+
         public void Init(InputUser user)
         {
             _inputUser = user;
@@ -25,6 +30,20 @@ namespace My_Game.Scripts
             Subscribe();
             _currentBullets = dataWeapon.amountAmmoInMagazine;
             _maxBullets = dataWeapon.ammountAmmoMax;
+        }
+
+        private void RecoilApply()
+        {
+            var recoilSequence = DOTween.Sequence();
+            weaponTransform.DOKill();
+            recoilSequence.Append(weaponTransform.DOLocalRotate(recoil, 0.05f).SetEase(Ease.OutQuad));
+            recoilSequence.Append(weaponTransform.DOLocalRotate(_originalWeaponRotation,  0.05f).SetEase(Ease.OutQuad));
+        }
+        
+
+        private void Awake()
+        {
+            _originalWeaponRotation = weaponTransform.localEulerAngles;
         }
 
         private void OnEnable()
@@ -45,7 +64,7 @@ namespace My_Game.Scripts
         private void Update()
         {
             if (!dataWeapon.isAutomatic || !_initialized) return;
-            if (_currentBullets <= 0 ) return;
+            if (_currentBullets <= 0) return;
             if (_inputUser.IsFirePressed)
             {
                 _nextFire -= Time.deltaTime;
@@ -77,6 +96,7 @@ namespace My_Game.Scripts
             if (Physics.Raycast(pointFire.position, ray.direction, out RaycastHit hit))
             {
                 onShoot?.Invoke();
+                RecoilApply();
                 _currentBullets--;
             }
         }
